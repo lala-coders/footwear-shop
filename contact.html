@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact / Product Inquiry – LaLA Sneaks</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0D0D0D;
+            color: #fff;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 80px auto;
+            background: #111;
+            padding: 50px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-header span {
+            display: block;
+            color: #E53935;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contact-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
+            background: #1A1A1A;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            box-shadow: 0 0 10px #E53935;
+            transform: scale(1.02);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: none;
+        }
+
+        .contact-btn {
+            background-color: #E53935;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #d32f2f;
+            transform: scale(1.05);
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #00ff99;
+            font-weight: 600;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width:768px){
+            .contact-container{
+                padding: 40px 20px;
+                margin: 50px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-gray-900/50 py-4 fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-black tracking-wider">LaLA</a>
+            <nav class="space-x-6 hidden md:flex">
+                <a href="index.html" class="hover:text-red-500 transition-colors">Home</a>
+                <a href="men.html" class="hover:text-red-500 transition-colors">Men</a>
+                <a href="women.html" class="hover:text-red-500 transition-colors">Women</a>
+                <a href="cart.html" class="hover:text-red-500 transition-colors">Cart</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact / Product Inquiry Section -->
+    <section class="contact-container">
+        <div class="contact-header text-center mb-10">
+            <span>Have a Question?</span>
+            <h2>Product Inquiry</h2>
+        </div>
+
+        <form id="contactForm" class="contact-form grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" name="user_name" placeholder="Your Name" required>
+            <input type="email" name="user_email" placeholder="Your Email" required>
+            <input type="tel" name="user_phone" placeholder="Phone Number">
+            
+            <!-- Dynamic Product Dropdown -->
+            <select id="productSelect" name="product_name" required>
+                <option value="">Select Product</option>
+            </select>
+
+            <textarea name="message" placeholder="Write your question or details here..." class="md:col-span-2" required></textarea>
+            <div class="md:col-span-2 text-center">
+                <button type="submit" class="contact-btn">Send Inquiry</button>
+            </div>
+        </form>
+        <div id="successMsg" class="success-msg">✅ Your inquiry has been sent successfully!</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 py-8 mt-16 text-center">
+        <p class="text-gray-500">&copy; 2025 LaLA Kicks. All Rights Reserved.</p>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("Z6XfN8kXIy45VcJCU"); // Replace with your EmailJS user ID
+
+        // Sample Product Data
+        const products = [
+            { id: 1, name: 'Air Jordan 12 Retro' },
+            { id: 2, name: 'Air Jordan 1 Mid' },
+            { id: 3, name: 'Nike Air Premium' },
+            { id: 4, name: 'Nike Air Force 1' },
+            { id: 5, name: 'Nike Free Terra' },
+            { id: 6, name: 'Jordan Play' },
+            { id: 7, name: 'Nike Air Force X' },
+            { id: 8, name: 'Air Jordan 1 Low' }
+        ];
+
+        const productSelect = document.getElementById('productSelect');
+        products.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product.name;
+            option.textContent = product.name;
+            productSelect.appendChild(option);
+        });
+
+        // Form Submission
+        const form = document.getElementById('contactForm');
+        const successMsg = document.getElementById('successMsg');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            emailjs.sendForm('service_ofukz5b', 'template_udeaxya', this)
+                .then(() => {
+                    successMsg.style.display = 'block';
+                    form.reset();
+                    setTimeout(() => successMsg.style.display = 'none', 5000);
+                }, (error) => {
+                    alert("Oops! Something went wrong.\n" + JSON.stringify(error));
+                });
+        });
+    </script>
+</body>
+
+</html>

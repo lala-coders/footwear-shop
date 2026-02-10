@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaLA Sneaks - Your Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0D0D0D;
+      color: #fff;
+    }
+
+    .cart-card {
+      background-color: #1A1A1A;
+    }
+
+    .btn-red {
+      background-color: #E53935;
+    }
+
+    .btn-red:hover {
+      background-color: #ff4444;
+    }
+  </style>
+</head>
+
+<body class="text-white">
+
+  <!-- Header -->
+  <header class="py-4 border-b border-gray-800">
+    <nav class="container mx-auto px-6 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-black tracking-wider">LaLA</a>
+      <div class="hidden md:flex items-center space-x-10">
+        <a href="index.html#featured" class="hover:text-red-500">New & Featured</a>
+        <a href="men.html" class="hover:text-red-500">Men</a>
+        <a href="women.html" class="hover:text-red-500">Women</a>
+        <a href="kids.html" class="hover:text-red-500">Kids</a>
+        <a href="cart.html" class="text-red-500 font-semibold">Cart</a>
+        <a href="login.html" class="hover:text-red-500 transition-colors duration-300">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="container mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-10 text-center">Your Shopping Cart</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Cart Items -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="cart-card p-6 rounded-2xl flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1606813902797-2b9f0b09a7f2?w=400" alt="Shoe"
+              class="w-24 rounded-lg">
+            <div>
+              <h3 class="text-xl font-semibold">Nike Air Zoom Pegasus</h3>
+              <p class="text-gray-400">Men's Running Shoes</p>
+              <p class="mt-2 text-red-500 font-bold">$120</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-red-500">Remove</button>
+        </div>
+
+        <div class="cart-card p-6 rounded-2xl flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <img src="https://images.unsplash.com/photo-1584735175315-9b97c0b8b5bf?w=400" alt="Shoe"
+              class="w-24 rounded-lg">
+            <div>
+              <h3 class="text-xl font-semibold">Adidas Ultraboost 23</h3>
+              <p class="text-gray-400">Women's Sports Shoes</p>
+              <p class="mt-2 text-red-500 font-bold">$140</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-red-500">Remove</button>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-card p-8 rounded-2xl">
+        <h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+        <div class="flex justify-between mb-2">
+          <span>Subtotal</span>
+          <span>$260</span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span>Shipping</span>
+          <span>$10</span>
+        </div>
+        <hr class="my-4 border-gray-700">
+        <div class="flex justify-between text-xl font-bold mb-6">
+          <span>Total</span>
+          <span>$270</span>
+        </div>
+        <a href="login.html"
+          class="block text-center btn-red py-3 rounded-lg font-semibold transition-transform hover:scale-105">Checkout</a>
+      </div>
+    </div>
+  </section>
+
+      <footer class="bg-gray-900/50 pt-16 pb-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <a href="index.html" class="text-3xl font-black tracking-wider mb-8 inline-block">LaLA</a>
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-red-500">Home</a>
+                <a href="men.html" class="text-gray-400 hover:text-red-500">Men's Products</a>
+                <a href="women.html" class="text-gray-400 hover:text-red-500">Women’s products</a>
+                <a href="kids.html" class="text-gray-400 hover:text-red-500">Kids' Products</a>
+            </div>
+            <p class="text-gray-500">&copy; 2025 LaLA Kicks. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
